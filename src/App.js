@@ -24,11 +24,15 @@ function App() {
     },
   ];
 
+  const store = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="app">
-      <NewExpense/>
-      <Expenses expenses={expenses}/>
-     </div>
+      <NewExpense onStore={store} />
+      <Expenses expenses={expenses} />
+    </div>
   );
 }
 
