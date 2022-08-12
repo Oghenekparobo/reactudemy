@@ -6,7 +6,6 @@ const ExpenseForm = (props) => {
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
 
-
   // using one useState to manage the states of all the inputs
   // const [input, setInput] = useState({
   //   title: "",
@@ -16,17 +15,17 @@ const ExpenseForm = (props) => {
   return (
     <form
       onSubmit={(e) => {
-        e.preventDefault()
+        e.preventDefault();
         const expenseData = {
-         titleEntered: title,
-         amountEntered:amount,
-         dateEntered: new Date(date)
+          title: title,
+          amount: amount,
+          date: new Date(date),
         };
 
-        props.save(expenseData)
-        setTitle('')
-        setAmount('')
-        setDate('')
+        props.save(expenseData);
+        setTitle("");
+        setAmount("");
+        setDate("");
       }}
     >
       <div className="new-expense__controls">
@@ -71,7 +70,7 @@ const ExpenseForm = (props) => {
           <input
             type="date"
             min="2020-02-01"
-            step="2022-06-29"
+            max="2022-12-29"
             value={date}
             onChange={
               (e) => setDate(e.target.value)
@@ -87,7 +86,10 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button>Add Expense</button>
+        <button type="button" onClick={props.onCancel}>
+          cancel
+        </button>
+        <button type="submit">Add New Expense</button>
       </div>
     </form>
   );
